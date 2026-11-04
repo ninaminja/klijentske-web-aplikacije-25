@@ -1,0 +1,54 @@
+<div class="wrapper" *ngIf="flight">
+    <h1>{{flight.destination}}</h1>
+    <div class="flight-content">
+        <img [src]="utils.generateDestinationImage(flight.destination)" [alt]="flight.destination">
+        <mat-card class="flight-card" appearance="outlined">
+            <mat-card-content>
+                <h2>Flight Details</h2>
+                <mat-list role="list">
+                    <mat-list-item>
+                        <img mat-list-icon src="C:\Users\ashly\OneDrive\Documents\GitHub\klijentske-web-aplikacije-25\public\putovanje.jpg" alt="flight">
+                        <span matListItemTitle>Scheduled At:</span>
+                        <span matListItemLine>{{utils.formatDate(flight.scheduledAt)}}</span>
+                         <span matListItemIcon>
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                         </span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <span matListItemTitle>Flight Number:</span>
+                        <span matListItemLine>{{flight.flightNumber}}</span>
+                        <span matListItemIcon>
+                            <i class="fa-solid fa-plane-circle-exclamation"></i>
+                        </span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <span matListItemTitle>Airplane Model:</span>
+                        <span matListItemLine>{{flight.plane}}</span>
+                        <span matListItemIcon>
+                            <i class="fa-solid fa-font-awesome"></i>
+                        </span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <span matListItemTitle>Flight Type:</span>
+                        <span matListItemLine>{{flight.type.name}}</span>
+                        <span matListItemIcon>
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                        </span>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+            <mat-card-actions>
+                <a mat-button [routerLink]="['/details/'+flight.id]">
+                    <i class="fa-solid fa-cart-shopping"></i> Book Now
+                </a>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="flight-content">
+        <mat-card class="flight-map">
+            <iframe [src]="generateMapLink() | safe" width="860" height="600"></iframe>
+        </mat-card>
+    </div>
+</div>
+
+<app-loading *ngIf="!flight" />

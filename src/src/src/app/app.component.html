@@ -1,0 +1,23 @@
+
+<mat-toolbar class="mat-toolbar">
+  <span class="spacer"><i class="fa-solid fa-eye"></i> My Cinema</span>
+  <div class="nav-link">
+    <a routerLink="/" mat-button><i class="fa-solid fa-icons"></i> Home</a>
+    <a routerLink="/movie" mat-button><i class="fa-solid fa-clapperboard"></i>Movies list</a>
+    <a routerLink="/filmovi" mat-button><i class="fa-solid fa-clapperboard"></i>Filmovi</a>
+    <a routerLink="/search" mat-button><i class="fa-brands fa-searchengin"></i>Search</a>
+
+    <a routerLink="/login" mat-button *ngIf="!service.getActiveUser()">
+      <i class="fa-solid fa-right-to-bracket"></i>Login</a>
+
+      <a routerLink="/user" mat-button *ngIf="service.getActiveUser()">
+        <i class="fa-solid fa-user"></i>Profile</a>
+
+        <button mat-button *ngIf="service.getActiveUser()" (click)="doLogout()">
+          <i class="fa-solid fa-user"></i>Logout</button>
+
+    <a routerLink="/about" mat-button ><i class="fa-solid fa-info"></i> About</a>
+  </div>
+</mat-toolbar>
+
+<router-outlet />

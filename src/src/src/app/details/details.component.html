@@ -1,0 +1,34 @@
+
+<div class="div-content" *ngIf="movie">
+    <h1>Details about a movie</h1>
+    <div class="inner-div">
+      <img src="{{movie.poster}}" alt="">
+
+      <h3>Movie title</h3>
+      <p>{{movie.originalTitle}}</p>
+
+      <h3>Movie director</h3>
+      <p>{{movie.director.name}}</p>
+
+      <h3>Actors</h3>
+      <p *ngFor="let actor of movie.movieActors">{{actor.actor.name}}</p>
+
+      <h3>Genres</h3>
+      <p *ngFor="let genre of movie.movieGenres">{{genre.genre.name}}</p>
+
+      <h3>Movie duration</h3>
+      <p>{{movie.runTime}} min</p>
+
+      <h3>Description</h3>
+      <p>{{movie.description}}</p>
+
+
+      <h3>Movie starts</h3>
+      <p>{{utils.formatDate(movie.startDate)}}</p>
+
+      <button mat-button><a [routerLink]="['/details/'+movie.movieId+'/order']">Buy ticket</a></button>
+
+    </div>
+  </div>
+
+

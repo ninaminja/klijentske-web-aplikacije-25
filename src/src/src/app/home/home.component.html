@@ -1,0 +1,31 @@
+
+<div *ngIf="error">
+    <h3>Opps, an error occured!</h3>
+    <p style="color: red">{{error}}</p>
+  </div>
+  
+  <div *ngIf="movies" class="div-content">
+    <div *ngFor="let movie of movies" class="div-div-content">
+    <mat-card class="example-card" appearance="outlined">
+      <mat-card-header class="header-img">
+        <img class="poster" src="{{movie.poster}}" alt="{{movie.originalTitle}}"/>
+      </mat-card-header>
+  
+      <mat-card-content>
+        <mat-card-title>{{movie.originalTitle}}</mat-card-title>
+        <mat-card-subtitle>{{movie.director.name}}</mat-card-subtitle>
+        <p class="p-desc">Description: {{movie.shortDescription}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a routerLink="/details/{{movie.movieId}}" class="mca">Details about movie</a>
+        <a routerLink="/about" class="mca">Buy ticket</a>
+      </mat-card-actions>
+    </mat-card>
+    </div>
+  </div>
+  
+  
+  <div *ngIf="!movies && !error">
+    <p>podaci se ucitavaju</p>
+  </div>
+  

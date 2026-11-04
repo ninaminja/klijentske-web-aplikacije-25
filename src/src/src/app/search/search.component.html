@@ -1,0 +1,113 @@
+
+<div class="wrapper" *ngIf="dataSource">
+<h1>Search</h1>
+
+  <mat-card class="search-card">
+    <mat-card-content>
+        <mat-form-field class="search-input">
+            <mat-label>Search</mat-label>
+            <input type="text" matInput placeholder="Enter search criteria" (keyup)="doFilterChain()"
+                [(ngModel)]="userInput">
+        </mat-form-field>
+        <mat-form-field class="search-input">
+            <mat-label>Select Movie</mat-label>
+            <mat-select (selectionChange)="doFilterChain()" [(ngModel)]="selectMovies">
+                <mat-option *ngFor="let mov of movieList" [value]="mov">
+                    {{mov}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="search-input">
+          <mat-label>Select genre</mat-label>
+          <mat-select (selectionChange)="doFilterChain()" [(ngModel)]="selectGenre">
+              <mat-option *ngFor="let gn of genreList" [value]="gn">
+                  {{gn}}
+              </mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="search-input">
+        <mat-label>Select Date</mat-label>
+        <mat-select (selectionChange)="doFilterChain()" [(ngModel)]="selectDate">
+            <mat-option *ngFor="let date of dateOptions" [value]="date">
+                {{date}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</mat-card-content>
+
+<mat-form-field class="search-input">
+  <mat-label>Select Director</mat-label>
+  <mat-select (selectionChange)="doFilterChain()" [(ngModel)]="selectDirector">
+      <mat-option *ngFor="let dir of directorList" [value]="dir">
+          {{dir}}
+      </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<mat-card-actions>
+  <button mat-button (click)="doReset()">
+      <i class="fa-solid fa-ban"></i> Reset all search criteria
+  </button>
+</mat-card-actions>
+</mat-card>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+<mat-card-actions>
+
+    <ng-container matColumnDef="originalTitle">
+      <th mat-header-cell *matHeaderCellDef> Title of movie </th>
+      <td mat-cell *matCellDef="let element "> {{element.originalTitle}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="director">
+      <th mat-header-cell *matHeaderCellDef> Director </th>
+      <td mat-cell *matCellDef="let element "> {{element?.director.name}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="actor.actor.name">
+      <th mat-header-cell *matHeaderCellDef> Actors </th>
+      <td mat-cell *matCellDef="let element "> {{ element.movieActors?.length > 0 ? element.movieActors[0].actor.name : 'N/A' }}  </td>
+    </ng-container>
+
+    <ng-container matColumnDef="genre">
+        <th mat-header-cell *matHeaderCellDef> Genre </th>
+        <td mat-cell *matCellDef="let element  "> {{ element.movieGenres?.length > 0 ? element.movieGenres[0].genre.name : 'N/A' }}  </td>
+      </ng-container>
+
+      <ng-container matColumnDef="runTime">
+        <th mat-header-cell *matHeaderCellDef> Run time of movie</th>
+        <td mat-cell *matCellDef="let element "> {{element.runTime}} min</td>
+      </ng-container>
+
+      <ng-container matColumnDef="startDate">
+        <th mat-header-cell *matHeaderCellDef> Start date of movie</th>
+        <td mat-cell *matCellDef="let element "> {{utils.formatDate(element.startDate)}} min</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions</th>
+        <td mat-cell *matCellDef="let element "> 
+            <button mat-button>
+                <i>Details</i>
+            </button>
+            <button mat-button [routerLink]="['/details/'+ element.movieId+ '/order' ]" >
+                <i>Buy tickets</i>
+            </button>
+        </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </mat-card-actions>
+</table>
+  <p *ngIf="dataSource.length == 0">Could not find any movies for that criteria!</p>
+</div>
+
+
+
+  

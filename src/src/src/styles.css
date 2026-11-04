@@ -1,0 +1,56 @@
+
+body{
+    height: 100%;
+    background-color: #991b1b;
+    color: #fafafa;
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+
+a{
+    color:#fafafa;
+    font-size: small;
+}
+
+.container {
+   /* display: flex;
+    flex-wrap: wrap; /* Omogućava prelom u sledeći red ako nema mesta */
+   /* gap: 16px; /* Razmak između kartica */
+  /*  justify-content: center; /* Centriranje kartica 
+      margin-top: 10%; */
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Automatsko prilagođavanje */
+        gap: 16px;
+    margin-top: 5%;
+      
+}
+
+.example-card{
+
+max-width: 300px;
+display: inline-block;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.wrapper{
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.auth-card{
+    max-width: 540px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+.full-width{
+    width: 100%;
+
+}
+

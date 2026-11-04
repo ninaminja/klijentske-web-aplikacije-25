@@ -1,0 +1,16 @@
+.div-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 16px;
+
+      
+}
+
+.example-card {
+    width: 250px; 
+  }
+
+.poster{
+    max-width: 50%;
+    max-height: 400px;
+}

@@ -1,0 +1,40 @@
+.div-content{
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    gap: 10px;
+  }
+  .div-content h1{
+    align-self: self-start;
+    margin-bottom: 40px;
+  }
+  .inner-div {
+    max-width: 1000px;
+    background-color: rgb(247, 137, 137);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 50px;
+  }
+  .inner-div h3{
+    color: black;
+  }
+  .inner-div img{
+    aspect-ratio: 9 / 16;
+    width: 400px;
+    height: 600px;
+    align-self: center;
+    margin-bottom: 20px;
+  }
+
+  .div-content{
+    color:black;
+  }
+
+  .inner-div button{
+    color:black;
+
+  }
